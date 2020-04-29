@@ -117,7 +117,7 @@
       let sUrl = sBaseUrl + sParameter;
       $.getJSON(sUrl)
         .done(function (oData) {
-          $("#name").html(oData.name);
+          $("#name").html(capFirstChar(oData.name));
           $("#height").html(oData.height);
           $("#weight").html(oData.weight);
         })
