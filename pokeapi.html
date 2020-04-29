@@ -109,8 +109,21 @@
       oIntRegex = RegExp("^[0-9]*$");
 
     function getUserInput(sMessage) {
-      let sInput = prompt("Please enter your pokemon name or id", "charmander or 4");
-      getPokemon(sInput);
+      let sOutput = "Please enter the pokemon name or an id";
+      sOutput += sMessage ? "\n" + sMessage : "";
+
+      let sInput = prompt(sOutput, "charmander or 4");
+      
+      if (sInput === null) {
+      } else if (sInput === "") {
+        getUserInput("Please provide a correct input, we can't find nothing...")
+      } else if (sInput.indexOf(" ") >= 0) {
+        getUserInput("Please provide a correct input, do not use spaces.")
+      } else if (!oCharRegex.test(sInput) && !oIntRegex.test(sInput)) {
+        getUserInput("Please provide a correct input, you can't use and characters and numbers at the same time.")
+      } else {
+        getPokemon(sInput.toLowerCase());
+      }
     }
 
     function getPokemon(sParameter) {
