@@ -120,16 +120,20 @@
           $("#name").html(capFirstChar(oData.name));
           $("#height").html(oData.height);
           $("#weight").html(oData.weight);
+          console.log(getImageUrl(oData.id));
         })
         .fail(function (oError) {
           console.error(oError);
         });
     }
 
-    function getImageUrl(sId) {
+    function getImageUrl(nId) {
       let sImgUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/",
         sImgExt = ".png",
-        sImgId = sId.toString();
+        sImgId = nId.toString();
+      while (sImgId.length < 3) {
+        sImgId = "0" + sImgId;
+      }
       return sImgUrl + sImgId + sImgExt;
     }
 
