@@ -109,10 +109,19 @@
       oIntRegex = RegExp("^[0-9]*$");
 
     function getUserInput(sMessage) {
-      alert('Function triggered');
+      getPokemon('4');
     }
 
-    function getPokemon(sParameter) { }
+    function getPokemon(sParameter) {
+      let sUrl = sBaseUrl + sParameter;
+      $.getJSON(sUrl)
+        .done(function (oData) {
+          console.log(oData);
+        })
+        .fail(function (oError) {
+          console.error(oError);
+        });
+    }
 
     function getImageUrl(sId) {
       let sImgUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/",
