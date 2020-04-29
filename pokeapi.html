@@ -36,7 +36,7 @@
           <div id="buttontopPicture2"></div>
         </div>
         <div id="picture">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" height="170" />
+          <img id="img" src="" height="170" />
         </div>
         <div id="buttonbottomPicture"></div>
         <div id="speakers">
@@ -120,7 +120,7 @@
           $("#name").html(capFirstChar(oData.name));
           $("#height").html(oData.height);
           $("#weight").html(oData.weight);
-          console.log(getImageUrl(oData.id));
+          $("#img").attr('src', getImageUrl(oData.id));
         })
         .fail(function (oError) {
           console.error(oError);
