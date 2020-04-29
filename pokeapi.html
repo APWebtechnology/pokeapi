@@ -70,10 +70,10 @@
     <div id="right">
       <div id="stats">
         <p>
-          <strong>Name:</strong>&emsp;<span>Charmander</span><br />
-          <strong>Type:</strong>&emsp;<span>Fire</span><br />
-          <strong>Height:</strong>&emsp;<span>6</span> dm<br />
-          <strong>Weight:</strong>&emsp;<span>85</span> hg
+          <strong>Name:</strong>&emsp;<span id="name"></span><br />
+          <strong>Type:</strong>&emsp;<span id="type"></span><br />
+          <strong>Height:</strong>&emsp;<span id="height"></span> dm<br />
+          <strong>Weight:</strong>&emsp;<span id="weight"></span> hg
         </p>
       </div>
       <div id="blueButtons1">
@@ -109,14 +109,17 @@
       oIntRegex = RegExp("^[0-9]*$");
 
     function getUserInput(sMessage) {
-      getPokemon('4');
+      let sInput = prompt("Please enter your pokemon name or id", "charmander or 4");
+      getPokemon(sInput);
     }
 
     function getPokemon(sParameter) {
       let sUrl = sBaseUrl + sParameter;
       $.getJSON(sUrl)
         .done(function (oData) {
-          console.log(oData);
+          $("#name").html(oData.name);
+          $("#height").html(oData.height);
+          $("#weight").html(oData.weight);
         })
         .fail(function (oError) {
           console.error(oError);
