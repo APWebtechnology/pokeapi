@@ -141,9 +141,9 @@
     function getTypes(aTypes) {
       let sTypes = "";
       aTypes.forEach(function (oType) {
-        sTypes += oType.type.name;
+        sTypes += capFirstChar(oType.type.name) + ", ";
       });
-      return sTypes;
+      return sTypes.slice(0, -2);
     }
 
     function capFirstChar(sText) {
