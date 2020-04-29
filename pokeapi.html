@@ -120,6 +120,7 @@
           $("#name").html(capFirstChar(oData.name));
           $("#height").html(oData.height);
           $("#weight").html(oData.weight);
+          $("#type").html(getTypes(oData.types));
           $("#img").attr('src', getImageUrl(oData.id));
         })
         .fail(function (oError) {
@@ -139,6 +140,9 @@
 
     function getTypes(aTypes) {
       let sTypes = "";
+      aTypes.forEach(function (oType) {
+        sTypes += oType.type.name;
+      });
       return sTypes;
     }
 
